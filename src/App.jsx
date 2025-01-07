@@ -82,11 +82,11 @@ const handleInputChange = (event) => {
  {lista.length > 0 ? (
              lista.map((curItem) =>(
         <div className="col" key={curItem.id}>
-          <div className="card">
+          <div className="card text-bg-dark p-3">
             <div className="card-body">
               <h4>{curItem.titolo}</h4>
 
-              <div className="immagine"><img className="img" src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
+              <div ><img className="immagine" src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
               
               <button onClick={()=> cancella(curItem.id)} className="btn btn-danger">cancella</button>
             </div>
