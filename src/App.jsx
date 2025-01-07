@@ -1,12 +1,10 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 // creo l'object iniziale cone le chiavi vuote
  const initialFormData = {
-  name: "",
-  description: "",
+  titolo: "",
   immagine: "",
-  option: "",
  }
 
 function App() {
@@ -15,6 +13,18 @@ function App() {
 
 const  [lista, setLista] = useState ([]);
 const [formData, setFormData] = useState(initialFormData);
+
+useEffect(() => { 
+getData();
+},[])
+// creo la funzione che richiama axios
+const getData = () => {
+  axios.get(`http://localhost:3000/posts`).then((resp) =>{
+    console.log(resp);
+    setLista(resp.data.data);
+    
+  })
+}
 
 // creo la funzione per i campi compilativi quando si clicca il submit
 const handArticleForm = (event) => {
@@ -74,9 +84,9 @@ const handleInputChange = (event) => {
         <div className="col" key={curItem.id}>
           <div className="card">
             <div className="card-body">
-              <h4>{curItem.name}</h4>
+              <h4>{curItem.titolo}</h4>
 
-              <div><img src={curItem.immagine} alt="" /></div>
+              <div><img src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
               
               <button onClick={()=> cancella(curItem.id)} className="btn btn-danger">cancella</button>
             </div>
@@ -99,9 +109,9 @@ const handleInputChange = (event) => {
         <label htmlFor="articoloName">Nome articolo</label>
         <input type="text" 
         className="form-control"
-        name="name"
+        name="titolo"
         id="articoloName" 
-        value={formData.name} 
+        value={formData.titolo} 
         onChange={handleInputChange}/> 
       </div>
       <div>
