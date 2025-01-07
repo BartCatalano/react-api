@@ -86,7 +86,7 @@ const handleInputChange = (event) => {
             <div className="card-body">
               <h4>{curItem.titolo}</h4>
 
-              <div><img src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
+              <div className="immagine"><img className="img" src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
               
               <button onClick={()=> cancella(curItem.id)} className="btn btn-danger">cancella</button>
             </div>
