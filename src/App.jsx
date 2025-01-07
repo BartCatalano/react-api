@@ -75,8 +75,7 @@ const handleInputChange = (event) => {
           <div className="card">
             <div className="card-body">
               <h4>{curItem.name}</h4>
-              <p>{curItem.description}</p>
-              <div><p>Hai selezionato:{curItem.option}</p></div>
+
               <div><img src={curItem.immagine} alt="" /></div>
               
               <button onClick={()=> cancella(curItem.id)} className="btn btn-danger">cancella</button>
@@ -106,15 +105,6 @@ const handleInputChange = (event) => {
         onChange={handleInputChange}/> 
       </div>
       <div>
-      <label htmlFor="articoloDescription">Descrizione</label>
-        <input type="text" 
-        className="form-control" 
-        name="description"
-        id="articoloDescription" 
-        value={formData.description} 
-        onChange={handleInputChange}/> 
-      </div>
-      <div>
       <label htmlFor="immagineInsert">Immagine</label>
         <input type="text" 
         className="form-control" 
@@ -123,21 +113,6 @@ const handleInputChange = (event) => {
         value={formData.immagine} 
         onChange={handleInputChange}/> 
       </div>
-      <div className="m-2" >
-      <label htmlFor="selectOption">Seleziona un'opzione:</label>
-      <select
-        name="option"
-        onChange={handleInputChange}
-        value={formData.option}
-      >
-        <option value="">-- Seleziona --</option>
-        <option value=" Categoria 1">Categoria  1</option>
-        <option value=" Categoria 2">Categoria 2</option>
-      </select>
-      
-    </div>
- 
-
       <button type="submit" className="btn btn-primary">salva</button>
     </form>
   </section>
