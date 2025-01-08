@@ -5,6 +5,7 @@ const apiurl = import.meta.env.VITE_API_URL;
  const initialFormData = {
   titolo: "",
   immagine: "",
+  contenuto:"",
  }
 
 function App() {
@@ -86,11 +87,15 @@ const handleInputChange = (event) => {
             <div className="card-body">
               <h4>{curItem.titolo}</h4>
 
-              <div ><img className="immagine" src={`${apiurl}${curItem.immagine}` } alt="" /></div>
+              <div className="row row-cols rowcols-lg-3 ">
+                <img className="immagine col" src={`${apiurl}${curItem.immagine}` } alt="" />
+              <span className="mx-2 col">{curItem.contenuto} </span>
+              </div>
               
-              <button onClick={()=> cancella(curItem.id)} className="btn btn-danger mt-3">cancella</button>
+              
+              
             </div>
-            
+            <button onClick={()=> cancella(curItem.id)} className="btn btn-danger mt-3">cancella</button>
           </div>
         </div>
       ))
