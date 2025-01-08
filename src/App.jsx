@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+const apiurl = import.meta.env.VITE_API_URL;
 // creo l'object iniziale cone le chiavi vuote
  const initialFormData = {
   titolo: "",
@@ -19,7 +19,7 @@ getData();
 },[])
 // creo la funzione che richiama axios
 const getData = () => {
-  axios.get(`http://localhost:3000/posts`).then((resp) =>{
+  axios.get(`${apiurl}posts`).then((resp) =>{
     console.log(resp);
     setLista(resp.data.data);
     
@@ -86,7 +86,7 @@ const handleInputChange = (event) => {
             <div className="card-body">
               <h4>{curItem.titolo}</h4>
 
-              <div ><img className="immagine" src={`http://localhost:3000/${curItem.immagine}` } alt="" /></div>
+              <div ><img className="immagine" src={`${apiurl}${curItem.immagine}` } alt="" /></div>
               
               <button onClick={()=> cancella(curItem.id)} className="btn btn-danger mt-3">cancella</button>
             </div>
