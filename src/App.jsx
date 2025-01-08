@@ -78,7 +78,7 @@ const handleInputChange = (event) => {
     <>
       <div className="container">
         <section>
- <h2>Articoli inseriti</h2>
+ <h2>Ricette inserite</h2>
  <div className="row row-cols-2 rowcols-lg-3">
  {lista.length > 0 ? (
              lista.map((curItem) =>(
@@ -99,7 +99,7 @@ const handleInputChange = (event) => {
           </div>
         </div>
       ))
-          ) : (<p>Nessun articolo presente</p>
+          ) : (<p>Nessuna Ricetta presente</p>
    
       
           )}
@@ -108,10 +108,10 @@ const handleInputChange = (event) => {
 
  
   <section>
-    <h3>aggiungi articolo</h3>
+    <h3>Aggiungi Ricetta</h3>
     <form onSubmit={handArticleForm} >
       <div className="mb-3">
-        <label htmlFor="articoloName">Nome articolo</label>
+        <label htmlFor="articoloName">Nome ricetta</label>
         <input type="text" 
         className="form-control"
         name="titolo"
@@ -119,13 +119,22 @@ const handleInputChange = (event) => {
         value={formData.titolo} 
         onChange={handleInputChange}/> 
       </div>
-      <div>
+      <div className="mb-3">
       <label htmlFor="immagineInsert">Immagine</label>
         <input type="text" 
         className="form-control" 
         name="immagine"
         id="immagineInsert" 
         value={formData.immagine} 
+        onChange={handleInputChange}/> 
+      </div>
+      <div className="mb-3">
+      <label htmlFor="contenutoInsert">Descrizione Ricetta</label>
+        <input type="text" 
+        className="form-control" 
+        name="contenuto"
+        id="contenutoneInsert" 
+        value={formData.contenuto} 
         onChange={handleInputChange}/> 
       </div>
       <button type="submit" className="btn btn-primary">salva</button>
