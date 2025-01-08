@@ -32,8 +32,10 @@ const handArticleForm = (event) => {
   // creo il prevent default
   event.preventDefault ();
 
+// faccio la chiamata axios per post che inserisce la ricetta del form nell object in back
+axios.post(`${apiurl}posts`,formData).then((resp) => {
 
-// creo oggetto del nuovo articolo,
+  // creo oggetto del nuovo articolo,
   const newArticle = {
     ...formData,
     id: Date.now(),
@@ -50,9 +52,14 @@ const handArticleForm = (event) => {
   
 // ripulisco i campi del form
 setFormData(initialFormData);
+  
+})
+
 };
+
 // creo funzione per cancellare il post inserito
 const cancella = (idDaCancellare) => {
+  
   const newArray = lista.filter(curArticolo => curArticolo.id !== idDaCancellare);
 
 setLista(newArray)
@@ -78,7 +85,7 @@ const handleInputChange = (event) => {
     <>
       <div className="container">
         <section>
- <h2>Ricette inserite</h2>
+ <h2 className="m-3">Ricette inserite</h2>
  <div className="row row-cols-2 rowcols-lg-3">
  {lista.length > 0 ? (
              lista.map((curItem) =>(
@@ -91,9 +98,6 @@ const handleInputChange = (event) => {
                 <img className="immagine col" src={`${apiurl}${curItem.immagine}` } alt="" />
               <span className="mx-2 col">{curItem.contenuto} </span>
               </div>
-              
-              
-              
             </div>
             <button onClick={()=> cancella(curItem.id)} className="btn btn-danger mt-3">cancella</button>
           </div>
